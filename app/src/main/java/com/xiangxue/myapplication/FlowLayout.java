@@ -1,6 +1,7 @@
 package com.xiangxue.myapplication;
 
 import android.content.Context;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,11 +107,13 @@ public class FlowLayout extends ViewGroup {
             /***不换行***/
             lineViews.add(child);
             lineWidth += childWidth;
-            lineHeight = Math.max(lineHeight, childHeight);
+            if (lp.height != LayoutParams.MATCH_PARENT) {
+                lineHeight = Math.max(lineHeight, childHeight);
+            }
 
             //最后一行的宽高计算
             if (i == childCount - 1) {
-                flowlayoutWidth = Math.max(flowlayoutWidth,lineWidth);
+                flowlayoutWidth = Math.max(flowlayoutWidth, lineWidth);
                 flowlayoutHeight += lineHeight;
                 heights.add(lineHeight);
                 views.add(lineViews);
@@ -120,6 +123,34 @@ public class FlowLayout extends ViewGroup {
         //FlowLayout最终的宽高
         setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthSize : flowlayoutWidth,
                 heightMode == MeasureSpec.EXACTLY ? heightSize : flowlayoutHeight);
+
+
+        // 重新测量一次Layout_heigth = match_parent
+//        reMeasureChild(widthMeasureSpec, heightMeasureSpec);
+
+    }
+
+    /**
+     * 处理layoutheigth = match_parent
+     */
+    private void reMeasureChild(int widthMeasureSpec, int heightMeasureSpec) {
+        int lineSize = views.size();
+        for (int i = 0; i < lineSize; i++) {
+            int lineHeight = heights.get(i);  // 每一行的行高
+            List<View> lineViews = views.get(i);  // 每一行的子View
+
+            // 遍历子View
+            int size = lineViews.size();
+            for (int j = 0; j < size; j++) {
+                View child = lineViews.get(j);
+                LayoutParams params = child.getLayoutParams();
+                if (params.height == LayoutParams.MATCH_PARENT) {
+                    int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, params.width);
+                    int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lineHeight);
+                    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+                }
+            }
+        }
 
     }
 
