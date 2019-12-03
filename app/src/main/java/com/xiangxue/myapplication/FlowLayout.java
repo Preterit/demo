@@ -1,10 +1,16 @@
 package com.xiangxue.myapplication;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.text.Layout;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+
+import androidx.core.view.ViewConfigurationCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +27,17 @@ public class FlowLayout extends ViewGroup {
     private List<Integer> heights;   // 每一行的高度
 
     public FlowLayout(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public FlowLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        ViewConfiguration configuration = ViewConfiguration.get(context);
+        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);// 获取最小滑动距离
     }
 
     @Override
@@ -72,6 +80,8 @@ public class FlowLayout extends ViewGroup {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
+        measureHeight = heightSize;
+
         init();
 
         // 记录当前行的高度
@@ -92,10 +102,15 @@ public class FlowLayout extends ViewGroup {
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
 
-            LayoutParams lp = child.getLayoutParams();
+            LayoutParams lp = (LayoutParams) child.getLayoutParams();
             // 看下当前的行剩余的宽度是否可以容纳下一个子View，
             // 如果放不下，换行，  保存当前行的所有的子view，累加高度，当前的宽度/高度置0
             if ((lineWidth + childWidth) > widthSize) {  // 换行
+                // 处理一行只有一个子view并且view的高度是match_parent
+                if (lineViews.size() == 1 && lineViews.get(0).getLayoutParams().height == LayoutParams.MATCH_PARENT) {
+                    lineHeight = Util.dp2px(150);
+                }
+
                 views.add(lineViews);
                 lineViews = new ArrayList<>();  // 创建新的一行
                 flowlayoutWidth = Math.max(flowlayoutWidth, lineWidth);
@@ -120,9 +135,13 @@ public class FlowLayout extends ViewGroup {
             }
 
         }
+
+        realHeight = flowlayoutHeight;
+        scrollable = realHeight > measureHeight;
+
         //FlowLayout最终的宽高
         setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthSize : flowlayoutWidth,
-                heightMode == MeasureSpec.EXACTLY ? heightSize : flowlayoutHeight);
+                heightMode == MeasureSpec.EXACTLY ? heightSize : realHeight);
 
 
         // 重新测量一次Layout_heigth = match_parent
@@ -143,7 +162,7 @@ public class FlowLayout extends ViewGroup {
             int size = lineViews.size();
             for (int j = 0; j < size; j++) {
                 View child = lineViews.get(j);
-                LayoutParams params = child.getLayoutParams();
+                LayoutParams params = (LayoutParams) child.getLayoutParams();
                 if (params.height == LayoutParams.MATCH_PARENT) {
                     int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, params.width);
                     int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lineHeight);
@@ -153,5 +172,118 @@ public class FlowLayout extends ViewGroup {
         }
 
     }
+
+    private int mTouchSlop; // 用来判断是不是一次滑动(滑动小于这个值就)
+    private float mLastInterceptX = 0;
+    private float mLastInterceptY = 0;
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.e("FlowLayout", "onInterceptTouchEvent  -  down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.e("FlowLayout", "onInterceptTouchEvent  -  move");
+                if (true) {
+                    return onTouchEvent(ev);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.e("FlowLayout", "onInterceptTouchEvent  -  up");
+                break;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.e("FlowLayout", "onTouchEvent  -  down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.e("FlowLayout", "onTouchEvent  -  move");
+                if (true) {
+                    return true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.e("FlowLayout", "onTouchEvent  -  up");
+                break;
+        }
+        return super.onTouchEvent(ev);
+    }
+
+
+    //    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent event) {
+//        boolean intercept = false;
+//        float curX = event.getX();
+//        float curY = event.getY();
+//
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                mLastInterceptX = event.getX();
+//                mLastInterceptY = event.getY();
+//                intercept = false;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                float dx = curX - mLastInterceptX;
+//                float dy = curY - mLastInterceptY;
+//
+//                Log.e("onInterceptTouchEvent", "草泥马");
+//
+//                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > mTouchSlop) {
+//                    intercept = true;
+//                } else {
+//                    intercept = false;
+//                }
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                intercept = false;
+//                break;
+//        }
+//        mLastInterceptX = curX;
+//        mLastInterceptY = curY;
+//
+//        return intercept;
+//    }
+
+
+    private boolean scrollable = false;
+    private int measureHeight; // 代表本身测量高度
+    private int realHeight; // 表示内容的高度
+    private float mLastY;
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) { // 处理滑动
+////        if (!scrollable) {
+////            return super.onTouchEvent(event);
+////        }
+//
+//        float curY = event.getY();
+//
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                mLastY = curY;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//
+//                float dy = mLastY - curY;
+//                int oldScrollY = getScrollX();
+//                int scrolY = (int) (oldScrollY + dy);  //这是本次需要偏移的距离 = 之前偏移的距离 + 本次手势滑动的距离
+//                scrollTo(0, scrolY);
+//                mLastY = curY;
+//
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                break;
+//        }
+//
+//
+//        return super.onTouchEvent(event);
+//    }
+
 
 }

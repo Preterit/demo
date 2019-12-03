@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xiangxue.myapplication.ZhanfHorizontalScrollview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:background="#999999"
+        android:text="第一个"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:background="#999999"
+        android:text="第2个"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="#999999"
+        android:text="第3个" />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="#999999"
+        android:text="第4个" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="#999999"
+        android:text="第5个" />
+
+</com.xiangxue.myapplication.ZhanfHorizontalScrollview>
