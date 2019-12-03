@@ -3,468 +3,469 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#ff0000"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#999999"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
         android:text="山东省看看看" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="山东省看" />
 
-    <TextView
+    <Button
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="#000000"
         android:text="jisiii"
         android:textColor="#fff" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="世界的方式" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="哦哦哦哦哦" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="圣诞节方式卡德罗夫" />
 
-    <TextView
+    <Button
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:text="00" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="w实话实说" />
 
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="倒数第二个" />
 
-    <TextView
+    <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="最后一个" />
