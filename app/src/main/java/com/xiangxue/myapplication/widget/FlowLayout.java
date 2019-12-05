@@ -1,19 +1,20 @@
-package com.xiangxue.myapplication;
+package com.xiangxue.myapplication.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.text.Layout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.OverScroller;
 
-import androidx.core.view.ViewConfigurationCompat;
+import com.xiangxue.myapplication.Util;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.core.view.ViewConfigurationCompat;
 
 /**
  * Date:2019-12-01
@@ -22,9 +23,13 @@ import java.util.List;
  */
 public class FlowLayout extends ViewGroup {
 
+    private static final String TAG = "FlowLayout";
+
     private List<View> lineViews;  // 每一行的子View
     private List<List<View>> views; //所有的行  ，把每一行的view放到这个数组中
     private List<Integer> heights;   // 每一行的高度
+
+    private OverScroller mScroller;
 
     public FlowLayout(Context context) {
         this(context, null);
@@ -38,6 +43,7 @@ public class FlowLayout extends ViewGroup {
         super(context, attrs, defStyleAttr);
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);// 获取最小滑动距离
+        mScroller = new OverScroller(context);
     }
 
     @Override
@@ -177,7 +183,6 @@ public class FlowLayout extends ViewGroup {
     private float mLastInterceptX = 0;
     private float mLastInterceptY = 0;
 
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
         boolean intercept = false;
@@ -191,14 +196,16 @@ public class FlowLayout extends ViewGroup {
                 intercept = false;
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.e(TAG, "onInterceptTouchEvent  -  move");
                 float dx = curX - mLastInterceptX;
                 float dy = curY - mLastInterceptY;
 
-                if (Math.abs(dy) > Math.abs(dx) ) {
+                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > mTouchSlop) {
                     intercept = true;
                 } else {
                     intercept = false;
                 }
+
                 break;
             case MotionEvent.ACTION_UP:
                 intercept = false;
@@ -206,7 +213,6 @@ public class FlowLayout extends ViewGroup {
         }
         mLastInterceptX = curX;
         mLastInterceptY = curY;
-        Log.e("onInterceptTouchEvent", "" + mLastInterceptY);
         return intercept;
     }
 
@@ -226,31 +232,51 @@ public class FlowLayout extends ViewGroup {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                }
                 mLastY = curY;
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.e(TAG, "onInterceptTouchEvent  -  move");
 
                 float dy = mLastY - curY;  // 本次手势滑动了多大距离
-                int oldScrollY = getScrollY();  // 已经偏移了的距离
-                int scrolY = (int) (oldScrollY + dy);  //这是本次需要偏移的距离 = 之前偏移的距离 + 本次手势滑动的距离
-                if (scrolY < 0) {
-                    scrolY = 0;
-                }
-                if (scrolY > realHeight) {
-                    scrolY = realHeight;
-                }
+//                int oldScrollY = getScrollY();  // 已经偏移了的距离
+//                int scrolY = (int) (oldScrollY + dy);  //这是本次需要偏移的距离 = 之前偏移的距离 + 本次手势滑动的距离
+//                if (scrolY < 0) {
+//                    scrolY = 0;
+//                }
+//                if (scrolY > realHeight - measureHeight) {
+//                    scrolY = realHeight - measureHeight;
+//                }
+//                scrollTo(0, scrolY);
 
-                scrollTo(0, scrolY);
+                mScroller.startScroll(0, mScroller.getFinalY(), 0, (int)dy);
+                invalidate();
                 mLastY = curY;
-
                 break;
             case MotionEvent.ACTION_UP:
                 break;
         }
 
-
-        return super.onTouchEvent(event);
+        return true;
     }
 
 
+    @Override
+    public void computeScroll() {
+        if (mScroller.computeScrollOffset()) {
+
+            int currY = mScroller.getCurrY();
+            if (currY < 0) {
+                currY = 0;
+            }
+            if (currY > realHeight - measureHeight) {
+                currY = realHeight - measureHeight;
+            }
+
+            scrollTo(0, currY);
+            postInvalidate();
+        }
+    }
 }

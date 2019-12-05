@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CustomProgressActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.xiangxue.myapplication.widget.HorizontalProgressBar
+            android:id="@+id/progress"
+            android:background="#e0e0e0"
+            android:layout_width="match_parent"
+            app:progress_reach_color="#ffff0000"
+            app:progress_text_color="#ffff0000"
+            app:progress_unreach_color="#44ff0000"
+            app:progress_unreach_height="2dp"
+            app:progress_reach_height="3dp"
+            android:progress="50"
+            android:padding="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content" />
+
+        <com.xiangxue.myapplication.widget.HorizontalProgressBar
+            android:layout_width="match_parent"
+            android:progress="30"
+            android:padding="15dp"
+            android:layout_marginTop="30dp"
+            app:progress_text_color="#44ff0000"
+            app:progress_unreach_color="#eee"
+            android:layout_height="wrap_content" />
+
+        <com.xiangxue.myapplication.widget.HorizontalProgressBar
+            android:layout_width="match_parent"
+            android:progress="100"
+            android:padding="15dp"
+            android:layout_marginTop="30dp"
+            app:progress_text_color="#44ff0000"
+            app:progress_unreach_color="#eee"
+            android:layout_height="wrap_content" />
+
+        <com.xiangxue.myapplication.widget.RoundProgressBar
+            android:background="#f2f2f2"
+            android:layout_width="wrap_content"
+            app:radius="20dp"
+            android:progress="30"
+            android:padding="15dp"
+            app:progress_unreach_height="2dp"
+            app:progress_reach_height="3dp"
+            android:layout_marginTop="30dp"
+            app:progress_reach_color="#ffff0000"
+            app:progress_text_color="#ffff0000"
+            app:progress_unreach_color="#999999"
+            android:layout_height="wrap_content" />
+
+        <com.xiangxue.myapplication.widget.RoundProgressBar
+            android:background="#f2f2f2"
+            android:layout_width="100dp"
+            app:radius="20dp"
+            android:progress="67"
+            android:padding="10dp"
+            app:progress_unreach_height="2dp"
+            app:progress_reach_height="3dp"
+            android:layout_marginTop="30dp"
+            app:progress_reach_color="#00BFFF"
+            app:progress_text_color="#00FFFF"
+            app:progress_unreach_color="#F5FFFA"
+            android:layout_height="200dp" />
+
+        <com.xiangxue.myapplication.widget.RoundProgressBar
+            android:id="@+id/roundBar"
+            android:background="#f2f2f2"
+            android:layout_width="200dp"
+            app:radius="20dp"
+            android:progress="15"
+            app:progress_text_size="20sp"
+            app:progress_unreach_height="2dp"
+            app:progress_reach_height="3dp"
+            android:layout_marginTop="30dp"
+            app:progress_reach_color="#DAA520"
+            app:progress_text_color="#FF0000"
+            app:progress_unreach_color="#F8F8FF"
+            android:layout_height="300dp" />
+    </LinearLayout>
+
+</ScrollView>
